@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "36882209190",
+    "project_id": "intagram-clone-f89ad",
+    "storage_bucket": "intagram-clone-f89ad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:36882209190:android:39ba05e451d6e3dbc09767",
+        "android_client_info": {
+          "package_name": "com.example.intagramclone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "36882209190-mgi86qmkhdf6gefmmobtk5hk3qmdbsrq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLEAGfa8j0crKtS7WvZwa7C-sOEyfM0iE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "36882209190-mgi86qmkhdf6gefmmobtk5hk3qmdbsrq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
