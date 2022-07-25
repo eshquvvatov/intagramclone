@@ -17,7 +17,6 @@ class SplashPage extends StatelessWidget {
   const SplashPage({Key? key}) : super(key: key);
   static const id = "/splash_page";
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

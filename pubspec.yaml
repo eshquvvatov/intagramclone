@@ -28,6 +28,15 @@ dependencies:
   share_plus: ^4.0.3
   http: ^0.13.4
   get: ^4.6.1
+  firebase_crashlytics: ^2.8.4
+  # for dynmaic lnk uchun
+  firebase_dynamic_links: ^4.3.1
+  firebase_remote_config: ^2.0.12
+  # increption
+  encrypt: ^5.0.1
+  # asymmetric
+  crypton: ^2.0.5
+  rsa_encrypt: ^2.0.0
 
 dev_dependencies:
   flutter_test:

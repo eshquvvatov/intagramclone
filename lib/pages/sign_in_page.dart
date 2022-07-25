@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -26,14 +27,13 @@ class SignInPage extends StatelessWidget {
                     padding: const EdgeInsets.only(left: 15, right: 15),
                     height: MediaQuery.of(context).size.height,
                     width: MediaQuery.of(context).size.width,
-                    decoration: const BoxDecoration(
+                    decoration:  BoxDecoration(
                       gradient: LinearGradient(
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
-                        colors: [
-                          Color.fromRGBO(193, 53, 132, 1),
-                          Color.fromRGBO(131, 58, 180, 1),
-                        ],
+                        colors:_controller.availableBackroundColor.containsKey(_controller.colors)?
+                        _controller.availableBackroundColor[_controller.colors]:
+                        _controller.backroiundColor,
                       ),
                     ),
                     child: Column(
@@ -71,7 +71,8 @@ class SignInPage extends StatelessWidget {
                               ),
                               MaterialButton(
                                 onPressed: () {
-                                  _controller.callHomePage(context);
+                                 // FirebaseCrashlytics.instance.crash();
+                                   _controller.callHomePage(context);
                                 },
                                 splashColor: Colors.white,
                                 animationDuration: const Duration(seconds: 10),

@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -15,8 +18,13 @@ void main() async {
   var initIosSetting = const IOSInitializationSettings();
   var initSetting = InitializationSettings(android: initAndroidSetting, iOS: initIosSetting);
   await FlutterLocalNotificationsPlugin().initialize(initSetting);
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]).then((_) {
-    runApp( const MyApp());
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]).then((_) async{
+    await runZonedGuarded(() async {
+      FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
+      runApp(MyApp());
+    }, (error, stackTrace) {
+      FirebaseCrashlytics.instance.recordError(error, stackTrace);
+    });
   });
 }
 class MyApp extends StatelessWidget {

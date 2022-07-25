@@ -35,9 +35,17 @@ class Utils {
   static initNotification() async {
     await _firebaseMessaging
         .requestPermission(sound: true, badge: true, alert: true);
-    _firebaseMessaging.getToken().then((String? token) {
+    _firebaseMessaging.getToken().then((String? token) async {
       assert(token != null);
-      print("***********************************************");
+      var deviceInfo = DeviceInfoPlugin();
+      var androidDeviceInfo = await deviceInfo.androidInfo;
+      int id =int.parse(DateTime.now().year.toString())+int.parse(DateTime.now().day.toString())+ int.parse(DateTime.now().second.toString());
+      print("bosh");
+      print(id.toString()+"**************************************************");
+      print(androidDeviceInfo.brand.toString() + "++++++++++++++++++++++++++++++");
+      print(androidDeviceInfo.model.toString() + "++++++++++++++++++++++++++++++");
+      print(androidDeviceInfo.device.toString() + "++++++++++++++++++++++++++++++");
+      print("firebase token berdi pastdagi firebase tokeni buni lakalga saqlab quyamiz ******************************");
       print(token);
       Prefs.store(StorageKeys.TOKEN, token!);
     });
@@ -63,6 +71,12 @@ class Utils {
       });
     } else {
       var androidDeviceInfo = await deviceInfo.androidInfo;
+      int id = int.parse(DateTime.now().toString());
+      print("bosh");
+      print(DateTime.now().toString()+"**************************************************");
+      print(androidDeviceInfo.brand.toString() + "++++++++++++++++++++++++++++++");
+      print(androidDeviceInfo.model.toString() + "++++++++++++++++++++++++++++++");
+      print(androidDeviceInfo.device.toString() + "++++++++++++++++++++++++++++++");
       params.addAll({
         'device_id': androidDeviceInfo.androidId!,
         'device_type': "A",

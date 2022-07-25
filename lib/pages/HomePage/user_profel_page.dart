@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:intagramclone/controllers/user_profile_page_controller.dart';
+import 'package:intagramclone/service/deeplink_seervice/leenk.dart';
 
 class UserProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
@@ -11,6 +12,7 @@ class UserProfilePage extends StatelessWidget {
         init: UserProfileController(),
         builder: (_controller) {
           return Scaffold(
+        backgroundColor: _controller.availableBackroundColor[_controller.backroiundColor],
             appBar: AppBar(
               leading: IconButton(
                 onPressed: () {
@@ -47,6 +49,15 @@ class UserProfilePage extends StatelessWidget {
                             children: [
                               const SizedBox(
                                 height: 10,
+                              ),
+
+                              MaterialButton(onPressed: ()async{
+                                _controller.fatchConfig();
+                               String ok= _controller.reverse("pppdp");
+                                ///
+                               print( await LinkService.createShortLink("Ravshanbek"));
+                              },
+                              child: Text(_controller.deepLink),
                               ),
                               CircleAvatar(
                                 radius: 44,
